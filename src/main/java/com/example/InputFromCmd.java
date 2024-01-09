@@ -7,7 +7,7 @@ public class InputFromCmd {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 //        System.out.println("enter the integer value");
-////        int value = sc.nextInt();
+//      int value = sc.nextInt();
 //        System.out.println("The integer value is "+value);
         System.out.println("Enter the string value");
         String inputValue = sc.nextLine();
@@ -17,7 +17,12 @@ public class InputFromCmd {
             if (inputValue.equalsIgnoreCase("p")){
                 System.out.println("Python");
 
-            }else System.out.println("Testing");
+            } else if (inputValue.equalsIgnoreCase("t")) {
+                System.out.println("Testing");
+
+            } else {
+                System.out.println("There is no course");
+            }
         }
 
 
