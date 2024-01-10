@@ -38,7 +38,7 @@ public class BrokenImages {
 				
 				File SrcFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 				FileHandler.copy(SrcFile,new File("C:\\Users\\kamal\\eclipse-workspace\\MyProject\\src\\Resources\\Screeenshot\\test1.png"));
-				System.out.println("Screen shot was scussfully taken");
+				System.out.println("Screen shot was successfully taken");
 				
 				System.out.println("The image is broken"+ ": " + image.getAttribute("src"));
 				

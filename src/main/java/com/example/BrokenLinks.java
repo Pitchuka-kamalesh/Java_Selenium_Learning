@@ -44,7 +44,8 @@ public class BrokenLinks {
 		      else
 		      { 
 		        System.out.println("Valid Link: " +  
-		                            url); 
+		                            url);
+
 		      }     
 		    } 
 		      
