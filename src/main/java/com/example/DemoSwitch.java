@@ -27,21 +27,22 @@ public class DemoSwitch {
     public static void main(String[] args) {
 
         System.out.println("Enter Course Code");
-        Scanner sc = new Scanner(System.in);
-        String courseCode = sc.nextLine();
-        switch (courseCode.toLowerCase()){
-            case "j":
-                System.out.println("java");
-                break;
-            case "p":
-                System.out.println("python");
-                break;
-            case "t":
-                System.out.println("Testing");
-                break;
-            default:
-                System.out.println("Course doesn't exits");
-        }
+        try (Scanner sc = new Scanner(System.in)) {
+			String courseCode = sc.nextLine();
+			switch (courseCode.toLowerCase()){
+			    case "j":
+			        System.out.println("java");
+			        break;
+			    case "p":
+			        System.out.println("python");
+			        break;
+			    case "t":
+			        System.out.println("Testing");
+			        break;
+			    default:
+			        System.out.println("Course doesn't exits");
+			}
+		}
 
 
 

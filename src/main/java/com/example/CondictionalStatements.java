@@ -22,11 +22,10 @@ public class CondictionalStatements {
 		/**
 		 * @param args
 		 */
-		int a,b,c;
+		int a,c;
 
 		a = 10;
-		b = 20;
-        c = 10;
+		c = 10;
 		//simple if statement
 		// * Check which number is bigger From given two number from a and b
 /*        if (a>b){
