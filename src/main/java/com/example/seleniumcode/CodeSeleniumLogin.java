@@ -24,6 +24,19 @@ public class CodeSeleniumLogin {
 
 
    }
+   static void dropDownList(WebDriver driver,String valueToSelect){
+       List<WebElement> dropDown = driver.findElements(By.xpath("//div[@role='option']//span"));
+       for (WebElement drop : dropDown) {
+           System.out.println(drop.getText());
+           if (drop.getText().contains(valueToSelect)){
+               System.out.println("Checking what to after");
+               drop.click();
+               break;
+           }
+       }
+
+
+   }
 
 
     public static void main(String[] args) {
@@ -41,25 +54,12 @@ public class CodeSeleniumLogin {
         driver.findElement(By.xpath("//div[@class='orangehrm-header-container']/button")).click();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.findElement(By.xpath("//div[@class='oxd-select-text--after']")).click();
-        List<WebElement> dropDown = driver.findElements(By.xpath("//div[@role='option']//span"));
-        for (WebElement drop : dropDown) {
-            System.out.println(drop.getText());
-            if (drop.getText().equalsIgnoreCase("Admin")){
-                System.out.println("Checking what to after");
-                drop.click();
-                break;
-            }
-        }
+        dropDownList(driver,"Admin");
+
         driver.findElement(By.xpath("//input[@placeholder='Type for hints...']")).sendKeys("Te");
-        List<WebElement> userNameDropDown = driver.findElements(By.xpath("//div[@role='option']//span"));
-        for (WebElement drop : userNameDropDown) {
-            System.out.println(drop.getText());
-            if (drop.getText().contains("Test")){
-                drop.click();
-                break;
-            }
-        }
+        dropDownList(driver,"Test");
         driver.findElement(By.xpath("//input[not(@type='password') and @autocomplete = 'off']")).sendKeys("Helloworld");
+        driver.findElement(By.xpath("")).sendKeys();
 
 
     }
