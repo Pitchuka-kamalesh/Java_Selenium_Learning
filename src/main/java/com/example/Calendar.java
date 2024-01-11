@@ -1,5 +1,6 @@
 package main.java.com.example;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,37 +12,47 @@ import java.util.concurrent.TimeUnit;
 
 public class Calendar {
 
-    public static void main(String[] args) throws InterruptedException {
-        WebDriver driver;
+    static WebDriver driver;
 
+    public static void clickHtmlElement(WebDriver driver){
         By clicks = By.xpath("//a[@title='Next']");
-        System.setProperty("webdriver.gecko.driver","C:\\Users\\kamal\\eclipse-workspace\\MyProject\\src\\Resources\\geckodriver.exe");
+        driver.findElement(clicks).click();
+
+
+    }
+
+
+
+    public static void main(String[] args) throws InterruptedException {
+
+
+
+//        System.setProperty("webdriver.gecko.driver","C:\\Users\\kamal\\eclipse-workspace\\MyProject\\src\\Resources\\geckodriver.exe");
+        WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.get("https://jqueryui.com/datepicker/");
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(5,TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(5,TimeUnit.SECONDS);
 
-//
         WebElement frameI = driver.findElement(By.xpath("//iframe[@class='demo-frame']"));
         driver.switchTo().frame(frameI);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(By.id("datepicker")).click();
-        WebElement nextButton = driver.findElement(clicks);
+        clickHtmlElement(driver);
         do {
 
             try {
-                nextButton.click();
+                clickHtmlElement(driver);
             }catch (org.openqa.selenium.StaleElementReferenceException e){
                 System.out.println(e);
                 Thread.sleep(500);
-                driver.findElement(clicks).click();
+                clickHtmlElement(driver);
                 Thread.sleep(500);
+                break;
 
             }
 
-        }while(driver.findElement(clicks).isEnabled());
+        }while(true);
 
 
 
